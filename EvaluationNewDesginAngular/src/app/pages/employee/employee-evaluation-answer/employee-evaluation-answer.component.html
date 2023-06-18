@@ -1,0 +1,33 @@
+<div  *ngFor="let question of quesArrStr; index as i">
+
+    <mat-card class=" theme-card">
+        <mat-card-header>
+            <mat-card-title class="m-b-0">{{question.question}}</mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content class="b-t-1">
+            <div>
+                <mat-chip class="example-box f-s-14" cdkDrag>
+                    Your Score:
+                </mat-chip> {{empAnswer[i]}}
+            </div>
+            <div class="row ">
+                <mat-slider min="0" max="5" step="1" showTickMarks discrete [displayWith]="formatLabel">
+                    <input matSliderThumb [(ngModel)]="empAnswer[i]">
+                </mat-slider>
+            </div>
+
+            <div class="row ">
+                <mat-form-field class="example-full-width">
+                    <mat-label>Leave a comment</mat-label>
+                    <textarea matInput placeholder="Ex. you have shown excellent work..." [(ngModel)]="empComment[i]"></textarea>
+                </mat-form-field>
+            </div>
+
+        </mat-card-content>
+
+    </mat-card>
+</div>
+<button mat-flat-button color="primary" type="submit" (click)="onSubmitResult()">
+    Submit
+</button>

@@ -1,0 +1,49 @@
+<mat-card class="cardWithShadow theme-card">
+  <mat-card-header>
+    <mat-card-title class="m-b-0">Create New Evaluation</mat-card-title>
+  </mat-card-header>
+
+  <form [formGroup]="evaluationForm" (ngSubmit)="submitForm(evaluationForm)">
+    <mat-card-content class="b-t-1">
+      <div class="row">
+        <div class="col-lg-12 col-sm-12">
+          <mat-card class="b-1 shadow-none">
+            <mat-card-content class="b-t-1">
+              <mat-form-field class="w-100" appearance="outline">
+                <mat-label>Evaluation Name</mat-label>
+                <input matInput formControlName="evalName" />
+              </mat-form-field>
+
+              <mat-form-field class="w-100" appearance="outline">
+                <mat-label>Evaluation Start Date</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="evalStartDate">
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+
+              <mat-form-field class="w-100" appearance="outline">
+                <mat-label>Evaluation End Date</mat-label>
+                <input matInput [matDatepicker]="picker1" formControlName="evalEndDate">
+                <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+              </mat-form-field>
+
+              <mat-form-field class="w-100" appearance="outline">
+                <mat-label>Evaluation End Date</mat-label>
+                <mat-select formControlName="evalDepId">
+                  <mat-option *ngFor="let item of DepartmentArray ; index as i" [value]="i+1">
+                    {{ item.viewValue }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <button mat-flat-button color="primary" [disabled]="!evaluationForm.valid" type="submit">
+                Save
+              </button>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+    </mat-card-content>
+  </form>
+</mat-card>

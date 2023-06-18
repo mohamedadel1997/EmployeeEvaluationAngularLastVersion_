@@ -1,0 +1,70 @@
+<div *ngIf="isLoading" style="text-align: center;">
+    <app-sppiner></app-sppiner>
+</div>
+<!-- <div>
+    <mat-form-field>
+        <mat-label>{{messageT}}</mat-label>
+        <input matInput value = {{messageT}} #message>
+      </mat-form-field>
+      
+      <mat-form-field>
+        <mat-label>Action</mat-label>
+        <input matInput value="close" #action>
+      </mat-form-field>
+      
+      <button mat-stroked-button (click)="openSnackBar(message.value, action.value)">Show snack-bar</button>
+      
+</div> -->
+<lib-ng-toast></lib-ng-toast>
+
+<mat-card class="cardWithShadow theme-card">
+    <mat-card-header>
+        <mat-card-title class="m-b-0">Assigned Questions for this evaluation</mat-card-title>
+        <div class="m-l-auto">
+            <button mat-flat-button color="primary" (click)="saveQuestionForEvaluation()">Save</button>
+        </div>
+    </mat-card-header>
+    <mat-card-content class="b-t-1">
+        <table mat-table [dataSource]="AllQuestionsForEvaluationArr" class="mat-elevation-z8">
+            <ng-container matColumnDef="question">
+                <th mat-header-cell class="col-10" *matHeaderCellDef> Questions </th>
+                <td mat-cell class="col-10" *matCellDef="let element"> {{element.question}} </td>
+            </ng-container>
+            <ng-container matColumnDef="action">
+                <th mat-header-cell *matHeaderCellDef> delete </th>
+                <td mat-cell *matCellDef="let element">
+                    <button (click)="RemoveQues(element)" mat-mini-fab color="warn">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </mat-card-content>
+</mat-card>
+
+
+<mat-card class="cardWithShadow theme-card">
+    <mat-card-header>
+        <mat-card-title class="m-b-0">All Questions</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="b-t-1">
+        <table mat-table [dataSource]="AllQuestionArr" class="mat-elevation-z8">
+            <ng-container matColumnDef="question">
+                <th mat-header-cell class="col-10" *matHeaderCellDef> Questions </th>
+                <td mat-cell class="col-10" *matCellDef="let element"> {{element.question}} </td>
+            </ng-container>
+            <ng-container matColumnDef="action">
+                <th mat-header-cell *matHeaderCellDef> add </th>
+                <td mat-cell *matCellDef="let element">
+                    <button (click)="addQuestionToEval(element)" mat-mini-fab color="primary">
+                        <mat-icon>add</mat-icon>
+                    </button>
+                </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </mat-card-content>
+</mat-card>

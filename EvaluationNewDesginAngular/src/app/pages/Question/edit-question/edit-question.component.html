@@ -1,0 +1,26 @@
+<mat-card class="cardWithShadow theme-card">
+    <mat-card-header>
+        <mat-card-title class="m-b-0">Edit Question</mat-card-title>
+    </mat-card-header>
+
+    <form [formGroup]="questionForm" (ngSubmit)="onSubmit(questionForm)">
+        <mat-card-content class="b-t-1">
+            <div class="row">
+                <div class="col-lg-12 col-sm-12">
+                    <mat-card class="b-1 shadow-none">
+                        <mat-card-content class="b-t-1">
+                            <mat-form-field class="w-100" appearance="outline">
+                                <mat-label>Question</mat-label>
+                                <input matInput formControlName="questionVal" />
+                            </mat-form-field>
+
+                            <button mat-flat-button color="primary" [disabled]="!questionForm.valid" type="submit">
+                                Save
+                            </button>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+            </div>
+        </mat-card-content>
+    </form>
+</mat-card>
